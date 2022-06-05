@@ -35,12 +35,10 @@ public class Controller {
     } catch (ParseException ex) {
       return ResponseEntity.status(500).body("Невалидная дата");
     }
+
     int id = studentManagerService.addStudent(student);
-    if (id != 0) {
-      return ResponseEntity.ok().body("Студент сохранен");
-    } else {
-      return ResponseEntity.status(500).body("Студент не сохранен");
-    }
+    return id != 0 ? ResponseEntity.ok().body("Студент сохранен")
+                   : ResponseEntity.status(500).body("Студент не сохранен");
   }
 
   @GetMapping()
