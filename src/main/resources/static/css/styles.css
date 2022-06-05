@@ -1,0 +1,36 @@
+.student-list{
+  width: 600px;
+  height: 400px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.add{
+  display: flex;
+}
+
+.name-student{
+  width: 250px;
+  border: 1px solid gray;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.birthdate-student{
+  width: 250px;
+  border: 1px solid gray;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.group-student{
+  width: 250px;
+  border: 1px solid gray;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.send-student{
+  width: 150px;
+  height: 40px;
+  border: 1px solid gray;
+  margin-right: 10px;
+  border-radius: 5px;
+}

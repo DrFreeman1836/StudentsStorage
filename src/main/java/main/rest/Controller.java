@@ -23,18 +23,24 @@ public class Controller {
   private final StudentManagerServiceImpl studentManagerService;
 
   @PostMapping
-  public ResponseEntity<?> addStudent(@RequestBody StudentDto studentDto) {
+  public ResponseEntity<?> addStudent(
+      @RequestParam(name = "name", required = false) String name,
+      @RequestParam(name = "birthdate", required = false) String birthdate,
+      @RequestParam(name = "group", required = false) String group) {
     Student student;
     try {
-      student = ConvertedDtoToModel.convertedToModel(studentDto);
+      student = ConvertedDtoToModel.convertedToModel(StudentDto.builder()
+          .name(name)
+          .birthdate(birthdate)
+          .group(group).build());
     } catch (ParseException ex) {
       return ResponseEntity.status(500).body("Невалидная дата");
     }
     int id = studentManagerService.addStudent(student);
     if (id != 0) {
-      return ResponseEntity.ok().body(id);
+      return ResponseEntity.status(200).body("Студент сохранен");
     } else {
-      return ResponseEntity.status(500).body("Студент не добавлен");
+      return ResponseEntity.status(500).body("Студент не сохранен");
     }
   }
 
@@ -44,17 +50,9 @@ public class Controller {
   }
 
   @DeleteMapping()
-  public ResponseEntity<?> deleteStudent(@RequestParam int id){
+  public ResponseEntity<?> deleteStudent(@RequestParam int id) {
     studentManagerService.deleteStudent(id);
     return ResponseEntity.ok().build();
   }
 
 }
-/**
- {
- "id": 0,
- "name": "fdsfdf",
- "birthdate": null,
- "group": "y113"
- }
- */

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Students</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="/js/main.js"></script>
+</head>
+<body>
+<section class="data-student">
+  <textarea class="name-student"></textarea>
+  <textarea class="birthdate-student"></textarea>
+  <textarea class="group-student"></textarea>
+</section>
+<section class="controls">
+  <button class="send-student">Сохранить</button>
+</section>
+<div class="student-list">
+  <div th:each="student : ${listStudent}">
+    <a th:text="${student.id}"></a>
+    <a th:text="${student.name}"></a>
+    <a th:text="${student.birthdate}"></a>
+    <a th:text="${student.group}"></a>
+  </div>
+</div>
+</body>
+</html>
