@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/api/v1/storage")
 @RequiredArgsConstructor
 public class Controller {
 

@@ -34,14 +34,14 @@ public class TestController {
 
   @Test
   public void addStudentTest() throws Exception {
-    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/api")
+    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post("/api/v1/storage")
         .param("name", "viktor")
         .param("birthdate", "28.03.2016")
         .param("group", "y-113");
     ResultActions result = mockMvc.perform(request);
     result.andExpect(MockMvcResultMatchers.status().is(200));
 
-    request = MockMvcRequestBuilders.post("/api")
+    request = MockMvcRequestBuilders.post("/api/v1/storage")
         .param("name", "viktor")
         .param("birthdate", "28 03-2016")
         .param("group", "y-113");
@@ -51,7 +51,7 @@ public class TestController {
 
   @Test
   public void getStudentsTest() throws Exception {
-    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/api");
+    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.get("/api/v1/storage");
     ResultActions result = mockMvc.perform(request);
     result.andExpect(MockMvcResultMatchers.status().is(200));
   }
@@ -59,7 +59,7 @@ public class TestController {
   @Test
   @DatabaseSetup("/students-data.xml")
   public void deleteStudentTest() throws Exception {
-    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.delete("/api")
+    MockHttpServletRequestBuilder request = MockMvcRequestBuilders.delete("/api/v1/storage")
         .param("id", "1");
     ResultActions result = mockMvc.perform(request);
     result.andExpect(MockMvcResultMatchers.status().is(200));
