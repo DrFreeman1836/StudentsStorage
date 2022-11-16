@@ -11,6 +11,7 @@ jobs:
         host: ${{ secrets.IP }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.PRIVATE_KEY }}
+        debug: true
         script: |
           cd /opt/docker/StudentsStorage && git pull ;
     - name: restart
